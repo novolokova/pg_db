@@ -25,12 +25,6 @@ SELECT "userId" FROM "orders";
 -- JOIN можемо робити тьльки по зв'язках таблиць
 
 
-
---отримати усі замовлення юзера з id=33
-SELECT * FROM "users"
-JOIN "orders" ON "users"."id"="orders"."userId"
- WHERE "users"."id"=33;
-
 -- скорочення
 SELECT "u"."id", "u"."email", "o"."id"
  FROM "users" AS "u"
