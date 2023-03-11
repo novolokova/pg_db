@@ -1,20 +1,17 @@
--- порахувати кількість телефонів, які були продані
--- порахувати кількість телефонів, які є на складі
--- порахувати сереню ціну
-
--- порахувати середню ціну кожного бренда
-
-SELECT sum("quantity") FROM "phones_to_orders";
-
-SELECT sum("quantity") FROM "phones";
-
-SELECT avg("price") FROM "phones";
-
-
+--порахувати кількість телефонів, які були продані
+SELECT sum("quantity")
+FROM "phones_to_orders";
+--порахувати кількість телефонів, які є на складі
+SELECT sum("quantity")
+FROM "phones";
+--порахувати сереню ціну
+SELECT avg(price) as "Average price"
+FROM "phones";
+--порахувати середню ціну кожного бренда
 SELECT avg(price) as "Average price", "brand"
 FROM "phones"
 GROUP BY "brand";
-
+--порахувати кількість моделей кожного бренда
 SELECT count("model"), "brand"
 FROM "phones"
 GROUP BY "brand";
@@ -34,4 +31,10 @@ GROUP BY "userId";
 SELECT sum("price"*"quantity") as "Summ price of phone"
 FROM "phones"
 WHERE "price" BETWEEN 10000 AND 20000;
+
+
+SELECT "id", "height","firstName", "birthday"
+FROM "users"
+ORDER BY "height" DESC, "firstName" ASC, "birthday" DESC;
+
 
