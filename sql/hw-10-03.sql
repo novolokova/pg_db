@@ -29,7 +29,7 @@ WHERE "phones"."id"=13
 
 --отримати модель найпопулярнішого телефону(продана найбільшу кількість)
 
-SELECT count("phones_to_orders"."quantity") AS "quantity", "phones"."model"
+SELECT sum("phones_to_orders"."quantity") AS "quantity", "phones"."model"
 FROM "phones" 
 JOIN "phones_to_orders" ON "phones"."id"="phones_to_orders"."phoneId"
 GROUP BY "phones"."model"
@@ -39,7 +39,7 @@ LIMIT 1;
 
 --отримати сумму чеку кожного замовлення
 
-SELECT sum("phones_to_orders"."phoneId"*"phones"."price"), "phones_to_orders"."orderId"
+SELECT sum("phones_to_orders"."quantity"*"phones"."price"), "phones_to_orders"."orderId"
 FROM "phones_to_orders"
 JOIN "phones" ON "phones"."id"= "phones_to_orders"."phoneId"
 GROUP BY "phones_to_orders"."orderId"
